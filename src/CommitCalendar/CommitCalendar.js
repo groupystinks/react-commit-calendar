@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Weeks from './Weeks';
 
 export default class CommitCalendar extends Component {
   render() {
@@ -7,7 +8,10 @@ export default class CommitCalendar extends Component {
         height={this.props.height}
         width={this.props.width}
       >
-        <g><rect fill="black" width={10} height={10} x={10} y={10} /></g>
+        <Weeks
+          height={this.props.height}
+          width={this.props.width}
+        />
       </svg>
     );
   }
@@ -15,6 +19,8 @@ export default class CommitCalendar extends Component {
 
 CommitCalendar.propTypes = {
   data: PropTypes.object.isRequired,
+  fromColor: PropTypes.string,
+  toColor: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
   unit: PropTypes.string,
