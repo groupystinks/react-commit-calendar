@@ -2,16 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import d3 from 'd3';
 import Days from './Days';
 import {
+  getDateByDays,
   totalWeeks,
   lastYearToday,
-  today,
   todayInWeek,
   lastYearTodayInWeek
-} from 'helpers/date';
+} from '../helpers/date';
 
 export default class Weeks extends Component {
   _renderWeeks = () => {
     let daysInWeek;
+    let startDate;
     let type;
     const { height, width } = this.props;
     const weeks = [];
@@ -21,12 +22,15 @@ export default class Weeks extends Component {
     for (let i = 0; i < totalWeeks; i++) {
       if (i === 0) {
         daysInWeek = lastYearTodayInWeek + 1;
+        startDate = lastYearToday;
         type = 'first-week';
       } else if (i === totalWeeks - 1) {
         daysInWeek = todayInWeek + 1;
+        startDate = getDateByDays(startDate, 7);
         type = 'last-week';
       } else {
         daysInWeek = 7;
+        startDate = getDateByDays(startDate, 7);
         type = 'normal';
       }
       weeks.push(
@@ -37,6 +41,7 @@ export default class Weeks extends Component {
           <Days
             daysInWeek={daysInWeek}
             height={height}
+            startDate={startDate}
             type={type}
           />
         </g>
