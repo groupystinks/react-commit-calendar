@@ -14,7 +14,7 @@ export default class Weeks extends Component {
     let daysInWeek;
     let startDate;
     let type;
-    const { height, width } = this.props;
+    const { dataset, maxCount, height, width } = this.props;
     const weeks = [];
     const xScale = d3.scale.ordinal()
       .domain(d3.range(totalWeeks))
@@ -39,8 +39,10 @@ export default class Weeks extends Component {
           transform={'translate(' + xScale(i) + ', 0)'} // eslint-disable-line
         >
           <Days
+            dataset={dataset}
             daysInWeek={daysInWeek}
             height={height}
+            maxCount={maxCount}
             startDate={startDate}
             type={type}
           />
@@ -60,6 +62,8 @@ export default class Weeks extends Component {
 }
 
 Weeks.propTypes = {
+  dataset: PropTypes.object,
+  maxCount: PropTypes.number,
   height: PropTypes.number,
   width: PropTypes.number,
 };
