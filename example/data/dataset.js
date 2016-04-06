@@ -1,4 +1,4 @@
-const dataset = {
+var dataset = {
   '2015-05-18': {
     count: 15,
     sources: [
@@ -14,11 +14,17 @@ const dataset = {
     ]
   },
   '2016-03-19': {
-    count: 50
+    count: 60
   },
   '2016-03-20': {
     count: 26
-  }
+  },
+  '2016-03-21': {
+    count: 41
+  },
+  '2016-03-22': {
+    count: 59
+  },
 };
 
 module.exports = dataset;

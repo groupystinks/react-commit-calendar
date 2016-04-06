@@ -14,7 +14,7 @@ export default class Weeks extends Component {
     let daysInWeek;
     let startDate;
     let type;
-    const { dataset, maxCount, height, width } = this.props;
+    const { dataset, maxCount, mouseOverHandler, mouseOutHandler, height, width } = this.props;
     const weeks = [];
     const xScale = d3.scale.ordinal()
       .domain(d3.range(totalWeeks))
@@ -43,8 +43,11 @@ export default class Weeks extends Component {
             daysInWeek={daysInWeek}
             height={height}
             maxCount={maxCount}
+            mouseOverHandler={mouseOverHandler}
+            mouseOutHandler={mouseOutHandler}
             startDate={startDate}
             type={type}
+            left={xScale(i)}
           />
         </g>
       );
@@ -64,6 +67,8 @@ export default class Weeks extends Component {
 Weeks.propTypes = {
   dataset: PropTypes.object,
   maxCount: PropTypes.number,
+  mouseOverHandler: PropTypes.func,
+  mouseOutHandler: PropTypes.func,
   height: PropTypes.number,
   width: PropTypes.number,
 };
