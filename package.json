@@ -12,7 +12,7 @@
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/react-commit-calendar.min.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",
     "deploy": "npm run build && npm publish",
-    "deploy:gh-pages": "npm run build:gh-pages && cp index.html example/dist/index.html && git checkout gh-pages && cp example/dist/* . && git commit -am 'Code update' && git push origin gh-pages && git checkout master",
+    "deploy:gh-pages": "npm run build:gh-pages && git checkout gh-pages && cp example/dist/* . && git commit -am 'Code update' && git push origin gh-pages && git checkout master",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
