@@ -3,15 +3,21 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: [
-    './src/index.js',
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './example/index.js',
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/static/',
   },
   module: {
+    // preLoaders: [
+    //   { test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader' },
+    // ],
     loaders: [
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -22,8 +28,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: path.join(__dirname, 'src'),
-        loaders: ['babel'],
+        include: [
+          path.join(__dirname, '../src'),
+          path.join(__dirname)
+        ],
+        loaders: ['react-hot', 'babel'],
       },
       {
         test: /\.css$/,
@@ -41,17 +50,11 @@ module.exports = {
       'components',
       'node_modules',
     ],
-    extensions: ['', '.json', '.js']
+    extensions: ['', '.json', '.js'],
   },
   plugins: [
     new ExtractTextPlugin('style.css', { allChunks: true }),
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false,
-        mangle: false,
-        compress: {
-            warnings: false
-        }
-    }),
-    new webpack.optimize.DedupePlugin(),
-  ]
+    // hot reload
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };

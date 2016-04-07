@@ -39,8 +39,8 @@ export default class CommitCalendar extends Component {
           borderRadius: '2px',
           color: '#fff',
           position: 'absolute',
-          top: position.top - 33 + 'px', // eslint-disable-line
-          left: position.left - 90 + 'px', // eslint-disable-line
+          top: position.top - 21 + 'px', // eslint-disable-line
+          left: position.left - 80 + 'px', // eslint-disable-line
           height: '20px',
           width: '200px',
           textAlign: 'center' }}
