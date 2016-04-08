@@ -1,18 +1,18 @@
 {
   "name": "react-commit-calendar",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "commit calendar",
   "main": "./lib/index.js",
   "scripts": {
     "dev": "node example/server",
-    "clean": "rimraf dist",
+    "clean": "rimraf lib dist",
     "build:lib": "babel src --out-dir lib",
     "build:gh-pages": "npm run clean && webpack --config example/webpack.prod.config.js",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/react-commit-calendar.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/react-commit-calendar.min.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",
-    "deploy": "npm run build && npm publish",
     "deploy:gh-pages": "npm run build:gh-pages && git checkout gh-pages && cp example/dist/* . && git commit -am 'Code update' && git push origin gh-pages && git checkout master",
+    "prepublish": "npm run clean && npm run build",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -20,6 +20,11 @@
     "type": "git",
     "url": "git+https://github.com/groupystinks/react-commit-calendar.git"
   },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "keywords": [
     "react"
   ],
@@ -59,5 +64,8 @@
     "rimraf": "2.5.2",
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0-rc.1"
   }
 }
