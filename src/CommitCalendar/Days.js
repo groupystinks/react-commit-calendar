@@ -15,14 +15,18 @@ export default class Days extends Component {
   }
   render() {
     const days = [];
-    const { dataset, daysInWeek, height, maxCount, left, startDate, type } = this.props;
+    const { colors, dataset, daysInWeek, height, maxCount, left, startDate, type } = this.props;
 
     // TODO: 1. if maxCount is below specific number, let's not making any colorScale
-    //       2. color should be configurable
 
+    const colorLevels = colors.length;
     const colorScale = d3.scale.threshold()
-      .domain([(maxCount + 1) / 4, (maxCount + 1) / 2, (maxCount + 1) * 3 / 4])
-      .range(['#d6e685', '#8cc665', '#44a340', '#1e6823']);
+      .domain([
+        (maxCount + 1) / colorLevels,
+        (maxCount + 1) * 2 / colorLevels,
+        (maxCount + 1) * 3 / colorLevels
+      ])
+      .range(colors);
     const yScale = d3.scale.ordinal()
       .domain(d3.range(7))
       .rangeBands([0, height], 0.5, 0.8);
@@ -55,6 +59,7 @@ export default class Days extends Component {
 
 
 Days.propTypes = {
+  colors: PropTypes.array,
   dataset: PropTypes.object,
   daysInWeek: PropTypes.number,
   height: PropTypes.number.isRequired,

@@ -14,16 +14,19 @@ export default class Weeks extends Component {
     let daysInWeek;
     let startDate;
     let type;
-    const { dataset, maxCount, mouseOverHandler, mouseOutHandler, height, width } = this.props;
+    const { width } = this.props;
     const weeks = [];
     const xScale = d3.scale.ordinal()
       .domain(d3.range(totalWeeks))
       .rangeBands([0, width]);
     for (let i = 0; i < totalWeeks; i++) {
       if (i === 0) {
-        daysInWeek = lastYearTodayInWeek + 1;
+        daysInWeek = 7 - (lastYearTodayInWeek + 1) + 1;
         startDate = lastYearToday;
         type = 'first-week';
+      } else if (i === 1) {
+        startDate = getDateByDays(startDate, daysInWeek);
+        daysInWeek = 7;
       } else if (i === totalWeeks - 1) {
         daysInWeek = todayInWeek + 1;
         startDate = getDateByDays(startDate, 7);
@@ -39,12 +42,8 @@ export default class Weeks extends Component {
           transform={'translate(' + xScale(i) + ', 0)'} // eslint-disable-line
         >
           <Days
-            dataset={dataset}
+            {...this.props}
             daysInWeek={daysInWeek}
-            height={height}
-            maxCount={maxCount}
-            mouseOverHandler={mouseOverHandler}
-            mouseOutHandler={mouseOutHandler}
             startDate={startDate}
             type={type}
             left={xScale(i)}

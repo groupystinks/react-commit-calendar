@@ -29,7 +29,7 @@ export default class CommitCalendar extends Component {
   }
   _rendertip = () => {
     if (!this.state.isTipShown) { return null; }
-    const { dataset, unit } = this.props;
+    const { dataset, unit, marginLeft, marginTop } = this.props;
     const { date, position } = this.state;
     const count = dataset[date] ? dataset[date].count : 0;
     const tipText = date.concat(' ').concat(count).concat(' ').concat(unit);
@@ -39,8 +39,8 @@ export default class CommitCalendar extends Component {
           borderRadius: '2px',
           color: '#fff',
           position: 'absolute',
-          top: position.top - 21 + 'px', // eslint-disable-line
-          left: position.left - 80 + 'px', // eslint-disable-line
+          top: position.top - 21 + marginTop + 'px', // eslint-disable-line
+          left: position.left - 80 + marginLeft + 'px', // eslint-disable-line
           height: '20px',
           width: '200px',
           textAlign: 'center' }}
@@ -62,22 +62,27 @@ export default class CommitCalendar extends Component {
     );
   }
   render() {
+    const { marginBottom, marginLeft, marginRight, marginTop, height, width } = this.props;
+    const svgHeight = height + marginTop + marginBottom;
+    const svgWidth = width + marginLeft + marginRight;
     const maxCount = getMaxCount(this.props.dataset);
     const tip = this._rendertip();
     return (
       <div>
         <svg
-          height={this.props.height}
-          width={this.props.width}
+          height={svgHeight}
+          width={svgWidth}
         >
-          <Weeks
-            dataset={this.props.dataset}
-            height={this.props.height}
-            maxCount={maxCount}
-            mouseOverHandler={this.mouseOverHandler}
-            mouseOutHandler={this.mouseOutHandler}
-            width={this.props.width}
-          />
+          <g
+            transform={'translate(' + marginLeft + ', ' + marginTop + ')'} // eslint-disable-line
+          >
+            <Weeks
+              {...this.props}
+              maxCount={maxCount}
+              mouseOverHandler={this.mouseOverHandler}
+              mouseOutHandler={this.mouseOutHandler}
+            />
+          </g>
         </svg>
         {tip}
       </div>
@@ -87,11 +92,14 @@ export default class CommitCalendar extends Component {
 
 CommitCalendar.propTypes = {
   dataset: PropTypes.object.isRequired,
-  fromColor: PropTypes.string,
+  colors: PropTypes.array,
   height: PropTypes.number,
+  marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
+  marginTop: PropTypes.number,
   mouseOverHandler: PropTypes.func,
   mouseOutHandler: PropTypes.func,
-  toColor: PropTypes.string,
   width: PropTypes.number,
   unit: PropTypes.string,
 };
@@ -99,7 +107,10 @@ CommitCalendar.propTypes = {
 CommitCalendar.defaultProps = {
   height: 110,
   width: 720,
-  fromColor: '00ff00',
-  toColor: '#00b300',
+  colors: ['#d6e685', '#8cc665', '#44a340', '#1e6823'],
+  marginBottom: 0,
+  marginLeft: 80,
+  marginRight: 0,
+  marginTop: 20,
   unit: 'contributions',
 };

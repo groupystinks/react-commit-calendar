@@ -5,6 +5,9 @@ import CommitCalendar from '../src';
 import dataset from './data/dataset';
 
 ReactDOM.render(
-  <CommitCalendar dataset={dataset} />,
+  <CommitCalendar
+    colors={['#ffff00', '#e5e500', '#cccc00', '#b2b200']}
+    dataset={dataset}
+  />,
   document.getElementById('root')
 );
