@@ -1,7 +1,6 @@
 /src
 /test
 /example
-/node_modules
 index.html
 prepublish.js
 webpack.config.js
