@@ -1,5 +1,11 @@
 ## React Commit Calendar
 
+### To Checkout
+
+* * *
+Just Github commit calendar clone. See
+[Demo](http://groupystinks.com/react-commit-calendar/)
+
 ### To Start
 
 * * *
