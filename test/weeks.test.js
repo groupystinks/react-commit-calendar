@@ -18,7 +18,7 @@ describe('rendering Weeks', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<Weeks height={110} width={720} />);
     const actual = renderer.getRenderOutput().props.children.reduce(
-      (acc, previous) => acc + previous.props.children.props.daysInWeek
+      (acc, previous) => acc + previous.props.children[1].props.daysInWeek
     , 0);
     const expected = 366;
     expect(actual).toEqual(expected);

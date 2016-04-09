@@ -27,6 +27,66 @@ export default class CommitCalendar extends Component {
   mouseOutHandler = () => {
     this.setState({ isTipShown: false });
   }
+  _renderIndicator = () => {
+    const { colors, marginLeft, isRenderIndicator } = this.props;
+    if (!isRenderIndicator) {return null;}
+    const colorStrips = [];
+    colors.forEach((color, idx) =>
+      colorStrips.push(
+        <li
+          key={idx}
+          style={{ backgroundColor: color,
+            marginLeft: '3px',
+            width: '10px',
+            display: 'inline-block',
+            height: '10px' }}
+        >
+        </li>
+      )
+    );
+    return (
+      <div
+        style={{ marginLeft }}
+      >
+        <span>Less</span>
+        <ul style={{ display: 'inline', padding: '3px' }}>
+          <li
+            style={{ backgroundColor: '#eee',
+              marginLeft: '3px',
+              width: '10px',
+              display: 'inline-block',
+              height: '10px' }}
+          >
+          </li>
+          {colorStrips}
+        </ul>
+        <span>More</span>
+      </div>
+    );
+  }
+  _renderWeekMark = () => {
+    const weekMarks = [];
+    const { marginLeft, marginTop } = this.props;
+    const marks = ['Sun', 'M', 'Tue', 'W', 'Thu', 'F', 'Sat'];
+    marks.forEach((mark, idx) => {
+      if (idx % 2 === 1) {
+        weekMarks.push(
+          <text
+            textAnchor="middle"
+            dx={marginLeft - 10}
+            dy={marginTop + 20 + (13.5 * idx)}
+            fill="#ccc"
+            fontFamily="Verdana"
+            fontSize="11"
+            key={idx}
+          >
+            {mark}
+          </text>
+        );
+      }
+    });
+    return weekMarks;
+  }
   _rendertip = () => {
     if (!this.state.isTipShown) { return null; }
     const { dataset, unit, marginLeft, marginTop } = this.props;
@@ -67,6 +127,8 @@ export default class CommitCalendar extends Component {
     const svgWidth = width + marginLeft + marginRight;
     const maxCount = getMaxCount(this.props.dataset);
     const tip = this._rendertip();
+    const weekMarks = this._renderWeekMark();
+    const indicator = this._renderIndicator();
     return (
       <div>
         <svg
@@ -83,8 +145,10 @@ export default class CommitCalendar extends Component {
               mouseOutHandler={this.mouseOutHandler}
             />
           </g>
+          {weekMarks}
         </svg>
         {tip}
+        {indicator}
       </div>
     );
   }
@@ -94,12 +158,11 @@ CommitCalendar.propTypes = {
   dataset: PropTypes.object.isRequired,
   colors: PropTypes.array,
   height: PropTypes.number,
+  isRenderIndicator: PropTypes.bool,
   marginBottom: PropTypes.number,
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   marginTop: PropTypes.number,
-  mouseOverHandler: PropTypes.func,
-  mouseOutHandler: PropTypes.func,
   width: PropTypes.number,
   unit: PropTypes.string,
 };
@@ -108,6 +171,7 @@ CommitCalendar.defaultProps = {
   height: 110,
   width: 720,
   colors: ['#d6e685', '#8cc665', '#44a340', '#1e6823'],
+  isRenderIndicator: true,
   marginBottom: 0,
   marginLeft: 80,
   marginRight: 0,

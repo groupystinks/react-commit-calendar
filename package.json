@@ -1,6 +1,6 @@
 {
   "name": "react-commit-calendar",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "commit calendar",
   "main": "./lib/index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "src"
   ],
   "keywords": [
+    "d3",
     "react"
   ],
   "author": "Lai Chia Sheng <jason0911520@gmail.com> (http://groupystinks.com/)",
