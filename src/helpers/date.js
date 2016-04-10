@@ -9,5 +9,5 @@ export function getDateByDays(date, days) {
   return target;
 }
 
-export const lastYearToday = getDateByDays(today, -365);
+export const lastYearToday = getDateByDays(today, -364);
 export const lastYearTodayInWeek = lastYearToday.getDay();

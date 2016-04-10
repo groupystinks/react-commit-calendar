@@ -14,13 +14,13 @@ describe('rendering Weeks', () => {
     const expected = lastYearToday.toString();
     expect(actual).toIncludeJSX(expected);
   });
-  it('should contain 366 days', () => {
+  it('should contain 365 days', () => {
     const renderer = TestUtils.createRenderer();
     renderer.render(<Weeks height={110} width={720} />);
     const actual = renderer.getRenderOutput().props.children.reduce(
       (acc, previous) => acc + previous.props.children[1].props.daysInWeek
     , 0);
-    const expected = 366;
+    const expected = 365;
     expect(actual).toEqual(expected);
   });
 });
