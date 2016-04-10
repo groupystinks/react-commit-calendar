@@ -1,6 +1,6 @@
 ## React Commit Calendar
 
-### To Checkout
+### To Check out
 
 * * *
 Just Github commit calendar clone. See
