@@ -1,2 +1,6 @@
 import CommitCalendar from './CommitCalendar/CommitCalendar';
-export default CommitCalendar;
+import SourceCommitCalendar from './SourceCommitCalendar/SourceCommitCalendar';
+export {
+  CommitCalendar,
+  SourceCommitCalendar
+};
