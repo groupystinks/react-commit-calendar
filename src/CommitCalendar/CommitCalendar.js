@@ -89,6 +89,8 @@ export default class CommitCalendar extends Component {
   }
   _rendertip = () => {
     if (!this.state.isTipShown) { return null; }
+    const containerNode = this.refs.svgContainer;
+    const rect = containerNode.getBoundingClientRect();
     const { dataset, unit, marginLeft, marginTop } = this.props;
     const { date, position } = this.state;
     const count = dataset[date] ? dataset[date].count : 0;
@@ -99,8 +101,8 @@ export default class CommitCalendar extends Component {
           borderRadius: '2px',
           color: '#fff',
           position: 'absolute',
-          top: position.top - 21 + marginTop + 'px', // eslint-disable-line
-          left: position.left - 80 + marginLeft + 'px', // eslint-disable-line
+          top: position.top - 28 + rect.top + marginTop + 'px', // eslint-disable-line
+          left: position.left - 89 + rect.left + marginLeft + 'px', // eslint-disable-line
           height: '20px',
           width: '200px',
           textAlign: 'center' }}
@@ -130,7 +132,9 @@ export default class CommitCalendar extends Component {
     const weekMarks = this._renderWeekMark();
     const indicator = this._renderIndicator();
     return (
-      <div>
+      <div
+        ref={'svgContainer'}
+      >
         <svg
           height={svgHeight}
           width={svgWidth}

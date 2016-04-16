@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-class SourceCommitCalendar extends Component { // eslint-disable-line
+export default class SourceCommitCalendar extends Component { // eslint-disable-line
   render() {
     return (
       <h1>
