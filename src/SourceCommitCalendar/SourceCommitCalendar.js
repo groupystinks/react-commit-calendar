@@ -1,19 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import d3 from 'd3';
-import flattenNodes from '../helpers/flattenNodes';
 
 export default class SourceCommitCalendar extends Component { // eslint-disable-line
   render() {
     const { dataset, height, width } = this.props;
-    const diameter = 960;
+    const diameter = 480;
 
     const bubble = d3.layout.pack()
       .sort(null)
       .size([diameter - 4, diameter - 4])
       .value(d => d.size)
-      .padding(10);
-    const nodes = bubble.nodes(flattenNodes(dataset))
-      .filter(d => !d.children);
+      .padding(4);
+    const nodes = bubble.nodes(dataset);
 
     return (
       <svg
@@ -24,11 +22,13 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
           transform="translate(4, 4)"
         >
           {nodes.map(node => { // eslint-disable-line
+            console.log('node.children', node.children);
             return (
               <g
                 transform={'translate(' + node.x + ', ' + node.y + ')'} // eslint-disable-line
+                className={node.children ? 'node' : 'leaf node'}
               >
-                <title> {node.name} </title>
+                <title> {node.className} </title>
                 <circle
                   fill={'rgb(31, 119, 180)'}
                   fillOpacity={'.25'}
