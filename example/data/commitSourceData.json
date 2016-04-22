@@ -2,296 +2,362 @@
   "name": "Ulysses",
   "children": [
     {
-      "name": "animate",
+      "name": "1914-01",
       "children": [
         {
-          "name": "Easing",
-          "size": 17010
+          "name": "1914-01-01",
+          "size": 17010,
+          "group": "Telemachus"
         },
         {
-          "name": "FunctionSequence",
-          "size": 5842
+          "name": "1914-01-02",
+          "size": 5842,
+          "group": "Proteus"
         },
         {
-          "name": "ISchedulable",
-          "size": 1041
+          "name": "1914-01-03",
+          "size": 1041,
+          "group": "Nestor"
         },
         {
-          "name": "Parallel",
-          "size": 5176
+          "name": "1914-01-04",
+          "size": 5176,
+          "group": "Proteus"
         },
         {
-          "name": "Pause",
-          "size": 449
+          "name": "1914-01-05",
+          "size": 449,
+          "group": "Nestor"
         },
         {
-          "name": "Scheduler",
-          "size": 5593
+          "name": "1914-01-06",
+          "size": 5593,
+          "group": "Telemachus"
         },
         {
-          "name": "Sequence",
-          "size": 5534
+          "name": "1914-01-07",
+          "size": 5534,
+          "group": "Telemachus"
         },
         {
-          "name": "Transition",
-          "size": 9201
+          "name": "1914-01-08",
+          "size": 9201,
+          "group": "Proteus"
         },
         {
-          "name": "Transitioner",
-          "size": 19975
+          "name": "1914-01-09",
+          "size": 19975,
+          "group": "Proteus"
         },
         {
-          "name": "TransitionEvent",
-          "size": 1116
+          "name": "1914-01-10",
+          "size": 1116,
+          "group": "Proteus"
         },
         {
-          "name": "Tween",
-          "size": 6006
+          "name": "1914-01-11",
+          "size": 6006,
+          "group": "Nestor"
         }
       ]
     },
     {
-      "name": "display",
+      "name": "1914-02",
       "children": [
         {
-          "name": "DirtySprite",
-          "size": 8833
+          "name": "1914-02-01",
+          "size": 8833,
+          "group": "Proteus"
         },
         {
-          "name": "LineSprite",
-          "size": 1732
+          "name": "1914-02-02",
+          "size": 1732,
+          "group": "Proteus"
         },
         {
-          "name": "RectSprite",
-          "size": 3623
+          "name": "1914-02-03",
+          "size": 3623,
+          "group": "Telemachus"
         },
         {
-          "name": "TextSprite",
-          "size": 10066
+          "name": "1914-02-04",
+          "size": 10066,
+          "group": "Proteus"
         }
       ]
     },
     {
-      "name": "flex",
+      "name": "1914-03",
       "children": [
         {
-          "name": "FlareVis",
-          "size": 4116
+          "name": "1914-03-01",
+          "size": 4116,
+          "group": "Telemachus"
         }
       ]
     },
     {
-      "name": "query",
+      "name": "1914-04",
       "children": [
         {
-          "name": "AggregateExpression",
-          "size": 1616
+          "name": "1914-04-01",
+          "size": 1616,
+          "group": "Telemachus"
         },
         {
-          "name": "And",
-          "size": 1027
+          "name": "1914-04-02",
+          "size": 1027,
+          "group": "Nestor"
         },
         {
-          "name": "Arithmetic",
-          "size": 3891
+          "name": "1914-04-03",
+          "size": 3891,
+          "group": "Nestor"
         },
         {
-          "name": "Average",
-          "size": 891
+          "name": "1914-04-04",
+          "size": 891,
+          "group": "Telemachus"
         },
         {
-          "name": "BinaryExpression",
-          "size": 2893
+          "name": "1914-04-05",
+          "size": 2893,
+          "group": "Proteus"
         },
         {
-          "name": "Comparison",
-          "size": 5103
+          "name": "1914-04-06",
+          "size": 5103,
+          "group": "Telemachus"
         },
         {
-          "name": "CompositeExpression",
-          "size": 3677
+          "name": "1914-04-07",
+          "size": 3677,
+          "group": "Telemachus"
         },
         {
-          "name": "Count",
-          "size": 781
+          "name": "1914-04-08",
+          "size": 781,
+          "group": "Proteus"
         },
         {
-          "name": "DateUtil",
-          "size": 4141
+          "name": "1914-04-09",
+          "size": 4141,
+          "group": "Nestor"
         },
         {
-          "name": "Distinct",
-          "size": 933
+          "name": "1914-04-10",
+          "size": 933,
+          "group": "Proteus"
         },
         {
-          "name": "Expression",
-          "size": 5130
+          "name": "1914-04-11",
+          "size": 5130,
+          "group": "Proteus"
         },
         {
-          "name": "ExpressionIterator",
-          "size": 3617
+          "name": "1914-04-12",
+          "size": 3617,
+          "group": "Nestor"
         },
         {
-          "name": "Fn",
-          "size": 3240
+          "name": "1914-04-13",
+          "size": 3240,
+          "group": "Nestor"
         },
         {
-          "name": "If",
-          "size": 2732
+          "name": "1914-04-14",
+          "size": 2732,
+          "group": "Telemachus"
         },
         {
-          "name": "IsA",
-          "size": 2039
+          "name": "1914-04-15",
+          "size": 2039,
+          "group": "Proteus"
         },
         {
-          "name": "Literal",
-          "size": 1214
+          "name": "1914-04-16",
+          "size": 1214,
+          "group": "Proteus"
         },
         {
-          "name": "Match",
-          "size": 3748
+          "name": "1914-04-17",
+          "size": 3748,
+          "group": "Telemachus"
         },
         {
-          "name": "Maximum",
-          "size": 843
+          "name": "1914-04-18",
+          "size": 843,
+          "group": "Proteus"
         },
         {
-          "name": "Minimum",
-          "size": 843
+          "name": "1914-04-19",
+          "size": 843,
+          "group": "Telemachus"
         },
         {
-          "name": "Not",
-          "size": 1554
+          "name": "1914-04-20",
+          "size": 1554,
+          "group": "Nestor"
         },
         {
-          "name": "Or",
-          "size": 970
+          "name": "1914-04-21",
+          "size": 970,
+          "group": "Proteus"
         },
         {
-          "name": "Query",
-          "size": 13896
+          "name": "1914-04-22",
+          "size": 13896,
+          "group": "Nestor"
         },
         {
-          "name": "Range",
-          "size": 1594
+          "name": "1914-04-23",
+          "size": 1594,
+          "group": "Proteus"
         },
         {
-          "name": "StringUtil",
-          "size": 4130
+          "name": "1914-04-24",
+          "size": 4130,
+          "group": "Nestor"
         },
         {
-          "name": "Sum",
-          "size": 791
+          "name": "1914-04-25",
+          "size": 791,
+          "group": "Proteus"
         },
         {
-          "name": "Variable",
-          "size": 1124
+          "name": "1914-04-26",
+          "size": 1124,
+          "group": "Nestor"
         },
         {
-          "name": "Variance",
-          "size": 1876
+          "name": "1914-04-27",
+          "size": 1876,
+          "group": "Telemachus"
         },
         {
-          "name": "Xor",
-          "size": 1101
+          "name": "1914-04-28",
+          "size": 1101,
+          "group": "Proteus"
         }
       ]
     },
     {
-      "name": "util",
+      "name": "1914-05",
       "children": [
         {
-          "name": "Arrays",
-          "size": 8258
+          "name": "1914-05-01",
+          "size": 8258,
+          "group": "Telemachus"
         },
         {
-          "name": "Colors",
-          "size": 10001
+          "name": "1914-05-02",
+          "size": 10001,
+          "group": "Telemachus"
         },
         {
-          "name": "Dates",
-          "size": 8217
+          "name": "1914-05-03",
+          "size": 8217,
+          "group": "Nestor"
         },
         {
-          "name": "Displays",
-          "size": 12555
+          "name": "1914-05-04",
+          "size": 12555,
+          "group": "Nestor"
         },
         {
-          "name": "Filter",
-          "size": 2324
+          "name": "1914-05-05",
+          "size": 2324,
+          "group": "Telemachus"
         },
         {
-          "name": "Geometry",
-          "size": 10993
+          "name": "1914-05-06",
+          "size": 10993,
+          "group": "Telemachus"
         },
         {
-          "name": "IEvaluable",
-          "size": 335
+          "name": "1914-05-07",
+          "size": 335,
+          "group": "Telemachus"
         },
         {
-          "name": "IPredicate",
-          "size": 383
+          "name": "1914-05-08",
+          "size": 383,
+          "group": "Telemachus"
         },
         {
-          "name": "IValueProxy",
-          "size": 874
+          "name": "1914-05-09",
+          "size": 874,
+          "group": "Proteus"
         },
         {
-          "name": "Maths",
-          "size": 17705
+          "name": "1914-05-10",
+          "size": 17705,
+          "group": "Nestor"
         },
         {
-          "name": "Orientation",
-          "size": 1486
+          "name": "1914-05-11",
+          "size": 1486,
+          "group": "Nestor"
         },
         {
-          "name": "Property",
-          "size": 5559
+          "name": "1914-05-12",
+          "size": 5559,
+          "group": "Telemachus"
         },
         {
-          "name": "Shapes",
-          "size": 19118
+          "name": "1914-05-13",
+          "size": 19118,
+          "group": "Proteus"
         },
         {
-          "name": "Sort",
-          "size": 6887
+          "name": "1914-05-14",
+          "size": 6887,
+          "group": "Telemachus"
         },
         {
-          "name": "Stats",
-          "size": 6557
+          "name": "1914-05-15",
+          "size": 6557,
+          "group": "Nestor"
         },
         {
-          "name": "Strings",
-          "size": 22026
+          "name": "1914-05-16",
+          "size": 22026,
+          "group": "Telemachus"
         }
       ]
     },
     {
-      "name": "vis",
+      "name": "1914-06",
       "children": [
         {
-          "name": "Axes",
-          "size": 1302
+          "name": "1914-06-01",
+          "size": 1302,
+          "group": "Telemachus"
         },
         {
-          "name": "Axis",
-          "size": 24593
+          "name": "1914-06-02",
+          "size": 24593,
+          "group": "Nestor"
         },
         {
-          "name": "AxisGridLine",
-          "size": 652
+          "name": "1914-06-03",
+          "size": 652,
+          "group": "Nestor"
         },
         {
-          "name": "AxisLabel",
-          "size": 636
+          "name": "1914-06-04",
+          "size": 636,
+          "group": "Proteus"
         },
         {
-          "name": "CartesianAxes",
-          "size": 6703
+          "name": "1914-06-05",
+          "size": 6703,
+          "group": "Nestor"
         },
         {
-          "name": "Visualization",
-          "size": 16540
+          "name": "1914-06-06",
+          "size": 16540,
+          "group": "Nestor"
         }
       ]
     }
