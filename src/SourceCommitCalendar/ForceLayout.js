@@ -3,30 +3,28 @@ import d3 from 'd3';
 
 export default class ForceLayout extends Component {
   componentDidMount() {
-    const { nodes, width, height } = this.props;
-    console.log('nodes', nodes);
+    const { links, nodes, width, height } = this.props;
     const force = d3.layout.force()
       .charge(-120)
       .linkDistance(50)
       .size([width, height])
-      .nodes(nodes);
-      // .links(links);
+      .nodes(nodes)
+      .links(links);
 
-    const svg = d3.select(this.refs.mountPoint)
-      .append('svg')
+    const group = d3.select(this.refs.mountPoint)
       .attr('width', width)
       .attr('height', height);
 
-    // const link = svg.selectAll('line')
-    //   // .data(links)
-    //   .enter()
-    //   .append('line')
-    //   .style('stroke', '#999999')
-    //   .style('stroke-opacity', 0.6)
-    //   .style('stroke-width', (d) => Math.sqrt(d.value));
+    const link = group.selectAll('line')
+      .data(links)
+      .enter()
+      .append('line')
+      .style('stroke', '#999999')
+      .style('stroke-opacity', 0.6)
+      .style('stroke-width', (d) => Math.sqrt(d.value));
 
     const color = d3.scale.category20();
-    const node = svg.selectAll('circle')
+    const node = group.selectAll('circle')
       .data(nodes)
       .enter()
       .append('circle')
@@ -37,11 +35,11 @@ export default class ForceLayout extends Component {
       .call(force.drag);
 
     force.on('tick', () => {
-//       link
-//         .attr('x1', (d) => d.source.x)
-//         .attr('y1', (d) => d.source.y)
-//         .attr('x2', (d) => d.target.x)
-//         .attr('y2', (d) => d.target.y);
+      link
+        .attr('x1', (d) => d.source.x)
+        .attr('y1', (d) => d.source.y)
+        .attr('x2', (d) => d.target.x)
+        .attr('y2', (d) => d.target.y);
 
       node
         .attr('cx', (d) => d.x)

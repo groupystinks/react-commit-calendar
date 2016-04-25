@@ -8,7 +8,8 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
     this.bubble = null;
     this.nodes = null;
     this.state = {
-      forceComponents: [],
+      forceNodes: [],
+      isRenderForceComponents: false,
     };
   }
   componentWillMount() {
@@ -21,20 +22,29 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
     this.nodes = this.bubble.nodes(dataset);
   }
   onClickHandler = (date) => {
+    const { isRenderForceComponents } = this.state;
     const [targetNode] = this.nodes.filter(node => node.name === date);
-    const force = <ForceLayout nodes={targetNode.children} />;
-    console.log(this.state.forceComponents);
-    const forceComponents = this.state.forceComponents.slice();
-    forceComponents.push(force);
-    console.log('forceComponents', forceComponents);
-    this.setState({ forceComponents });
+    const forceNodes = this.state.forceNodes.slice();
+    forceNodes.push(targetNode);
+    this.setState({
+      forceNodes,
+      isRenderForceComponents: !isRenderForceComponents,
+    });
   }
   renderForce() {
-
+    const { forceNodes, isRenderForceComponents } = this.state;
+    if (forceNodes.length === 0 || !isRenderForceComponents) {return null;}
+    const nodes = forceNodes.reduce((accu, previous) => accu.concat(previous.children), []);
+    const links = nodes.map((node, idx) => { // eslint-disable-line
+      return {
+        source: idx, target: 0
+      };
+    });
+    return <ForceLayout links={links} nodes={nodes} />;
   }
   render() {
     const { height, width } = this.props;
-    const { forceComponents } = this.state;
+    const force = this.renderForce();
 
     return (
       <svg
@@ -54,7 +64,6 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
                 style={node.children ? null : styles}
                 className={node.children ? 'node' : 'leaf node'}
                 onClick={node.children ? bindClick : null}
-                z={node.children ? 100 : 0}
                 key={node.name}
                 transform={'translate(' + node.x + ', ' + node.y + ')'} // eslint-disable-line
               >
@@ -68,7 +77,7 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
               </g>
             );
           })}
-          {forceComponents}
+          {force}
         </g>
       </svg>
     );
