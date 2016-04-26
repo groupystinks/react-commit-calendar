@@ -7,9 +7,11 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
     super();
     this.bubble = null;
     this.nodes = null;
+    this.rootName = '';
     this.state = {
+      forceIds: [],
       forceNodes: [],
-      isRenderForceComponents: false,
+      isRenderForceComponents: true,
     };
   }
   componentWillMount() {
@@ -20,20 +22,40 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
       .value(d => d.size)
       .padding(4);
     this.nodes = this.bubble.nodes(dataset);
+    this.rootName = dataset.name;
   }
-  onClickHandler = (date) => {
+  onClickHandler = (date) => { // eslint-disable-line
     const { isRenderForceComponents } = this.state;
     const [targetNode] = this.nodes.filter(node => node.name === date);
-    const forceNodes = this.state.forceNodes.slice();
-    forceNodes.push(targetNode);
+    let forceNodes;
+    let forceIds;
+
+    if (targetNode.name === this.rootName) { return null; }
+    if (!(this.state.forceIds.indexOf(targetNode.name) === -1)) {
+      forceNodes = this.state.forceNodes.filter(node => node.name !== targetNode.name);
+      forceIds = this.state.forceIds.filter(id => id !== targetNode.name);
+    } else { // eslint-disable-line
+      forceNodes = this.state.forceNodes.slice();
+      forceIds = this.state.forceIds.slice();
+      forceNodes.push(targetNode);
+      forceIds.push(targetNode.name);
+    }
+
     this.setState({
+      forceIds,
       forceNodes,
       isRenderForceComponents: !isRenderForceComponents,
+    }, () => {
+      if (!this.state.isRenderForceComponents) {
+        this.setState({
+          isRenderForceComponents: !this.state.isRenderForceComponents,
+        });
+      }
     });
   }
   renderForce() {
     const { forceNodes, isRenderForceComponents } = this.state;
-    if (forceNodes.length === 0 || !isRenderForceComponents) {return null;}
+    if (forceNodes.length === 0 || !isRenderForceComponents) { return null; }
     const nodes = forceNodes.reduce((accu, previous) => accu.concat(previous.children), []);
     const links = nodes.map((node, idx) => { // eslint-disable-line
       return {
