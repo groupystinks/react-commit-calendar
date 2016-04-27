@@ -2,6 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import d3 from 'd3';
 import ForceLayout from './ForceLayout';
 
+const styles = {
+  leaf: {
+    display: 'none'
+  },
+  monthCircleActive: {
+    filter: 'url(#dropShadow)',
+  },
+  monthCircle: {
+    cursor: 'pointer',
+  },
+};
+
 export default class SourceCommitCalendar extends Component { // eslint-disable-line
   constructor() {
     super();
@@ -65,9 +77,9 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
     return <ForceLayout links={links} nodes={nodes} />;
   }
   render() {
-    const { height, width } = this.props;
+    const { baseColor, baseOpacity, height, width } = this.props;
+    const { forceIds } = this.state;
     const force = this.renderForce();
-
     return (
       <svg
         height={height}
@@ -78,24 +90,36 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
         >
           {this.nodes.map((node, idx) => { // eslint-disable-line
             const bindClick = this.onClickHandler.bind(this, node.name);
-            const styles = {
-              display: 'none'
-            };
             return (
               <g
-                style={node.children ? null : styles}
+                style={node.children ? null : styles.leaf}
                 className={node.children ? 'node' : 'leaf node'}
                 onClick={node.children ? bindClick : null}
                 key={node.name}
                 transform={'translate(' + node.x + ', ' + node.y + ')'} // eslint-disable-line
               >
                 <title> {node.className} </title>
+                <filter id="dropShadow">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                  <feOffset dx="2" dy="4" />
+                  <feMerge>
+                      <feMergeNode />
+                      <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
                 <circle
-                  fill={'rgb(31, 119, 180)'}
-                  fillOpacity={'.25'}
+                  style={
+                    !(forceIds.indexOf(node.name) === -1)
+                      ? styles.monthCircleActive : styles.monthCircle
+                  }
+                  fill={baseColor}
+                  fillOpacity={baseOpacity}
                   key={node.name}
                   r={node.r}
                 />
+                <text>
+                  {node.name}
+                </text>
               </g>
             );
           })}
@@ -109,7 +133,8 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
 SourceCommitCalendar.propTypes = {
   dataset: PropTypes.object.isRequired,
   diameter: PropTypes.number,
-  colors: PropTypes.array,
+  baseColor: PropTypes.string,
+  baseOpacity: PropTypes.string,
   height: PropTypes.number,
   marginBottom: PropTypes.number,
   marginLeft: PropTypes.number,
@@ -120,6 +145,8 @@ SourceCommitCalendar.propTypes = {
 };
 
 SourceCommitCalendar.defaultProps = {
+  baseColor: 'rgb(31, 119, 180)',
+  baseOpacity: '.25',
   colors: ['#d6e685', '#8cc665', '#44a340', '#1e6823'],
   diameter: 480,
   height: 960,
