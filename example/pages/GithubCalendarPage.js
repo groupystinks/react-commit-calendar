@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommitCalendar } from '../../src';
+import CommitCalendar from '../../src';
 // test util
 import dataset from '../data/dataset';
 

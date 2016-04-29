@@ -1,31 +1,25 @@
-import React, { Component } from 'react';
-// import Navigation from './Navigation/Navigation';
+import React from 'react';
+import GithubCalendarPage from './GithubCalendarPage';
+import SourceCommitCalendarPage from './SourceCommitCalendarPage';
 
-class App extends Component {
-  _renderCategory = () => {
-    const pathname = this.props.location.pathname;
-    return (
-        <h2>
-            {pathname}
-        </h2>
-    );
-  };
-  render() {
-    const { children } = this.props;
-    const category = this._renderCategory();
-    return (
-        <div>
-            <div>
-                {category}
-                {children}
-            </div>
-        </div>
-    );
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
   }
-}
+};
 
-App.propTypes = {
-    location: React.PropTypes.object
+const App = () => { // eslint-disable-line
+  return (
+      <div>
+          <div style={styles.container}>
+              <h1>Github Calendar</h1>
+              <GithubCalendarPage />
+              <h1>Source Calendar</h1>
+              <SourceCommitCalendarPage />
+          </div>
+      </div>
+  );
 };
 
 export default App;
