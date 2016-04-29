@@ -7,7 +7,7 @@
     "dev": "node example/server",
     "clean": "rimraf lib dist",
     "build:lib": "babel src --out-dir lib",
-    "build:gh-pages": "npm run clean && webpack --config example/webpack.prod.config.js",
+    "build:gh-pages": "cross-env NODE_ENV=production webpack --config example/webpack.prod.config.js",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/react-commit-calendar.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/react-commit-calendar.min.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min && node ./prepublish",

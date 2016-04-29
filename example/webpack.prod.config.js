@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var env = process.env.NODE_ENV;
 
 module.exports = {
   devtool: 'source-map',
@@ -56,5 +57,8 @@ module.exports = {
         }
     }),
     new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    })
   ]
 };
