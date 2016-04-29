@@ -16,9 +16,6 @@ export default class Days extends Component {
   render() {
     const days = [];
     const { colors, dataset, daysInWeek, height, maxCount, left, startDate, type } = this.props;
-
-    // TODO: 1. if maxCount is below specific number, let's not making any colorScale
-
     const colorLevels = colors.length;
     const colorScale = d3.scale.threshold()
       .domain([

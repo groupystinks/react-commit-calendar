@@ -8,6 +8,7 @@ const styles = {
   },
   monthCircleActive: {
     filter: 'url(#dropShadow)',
+    cursor: 'pointer',
   },
   monthCircle: {
     cursor: 'pointer',
@@ -71,7 +72,8 @@ export default class SourceCommitCalendar extends Component { // eslint-disable-
     const nodes = forceNodes.reduce((accu, previous) => accu.concat(previous.children), []);
     const links = nodes.map((node, idx) => { // eslint-disable-line
       return {
-        source: idx, target: 0
+        source: idx,
+        target: 0
       };
     });
     return <ForceLayout links={links} nodes={nodes} />;
